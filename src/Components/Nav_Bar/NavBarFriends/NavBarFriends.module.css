@@ -1,0 +1,16 @@
+.avatar_friends {
+    color: white;
+    /*display: grid;
+    grid-template-columns: 10px 10px;*/
+}
+
+.avatar_friends img {
+    width: 2vw;
+    border-radius: 2vw;
+}
+
+/*
+.avatar {
+    display: grid;
+    grid-template-rows: 1fr;
+}*/

@@ -1,0 +1,14 @@
+.item {
+    color: black;
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+}
+
+.item img {
+    width: 4vw;
+    border-radius: 3vw;
+}
+
+.postBlock {
+    margin: 2vw;
+}

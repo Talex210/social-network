@@ -1,0 +1,18 @@
+.nav {
+    grid-area: n;
+    background: black;
+    padding: 3vw;
+    line-height: 3vw;
+}
+
+
+.item {
+    color: white;
+    text-decoration: none;
+}
+
+.activeLink {
+    color: gold;
+    text-decoration: none;
+}
+

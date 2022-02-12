@@ -1,0 +1,11 @@
+.avatar img {
+    /*width: 10vw;*/
+}
+
+.selectPage {
+    font-weight: bold;
+}
+
+.selectPageOff {
+    cursor: pointer;
+}

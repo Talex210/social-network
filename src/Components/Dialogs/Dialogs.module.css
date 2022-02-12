@@ -1,0 +1,38 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 3fr 10fr;
+    line-height: 3vw;
+    padding: 3vw;
+}
+
+.item {
+    color: white;
+    text-decoration: none;
+}
+
+.activeLink {
+    color: gold;
+    text-decoration: none;
+}
+
+.columnName {
+    display: grid;
+    grid-template-columns: 4fr 10fr;
+}
+
+.columnName img{
+    width: 3.5vw;
+    border-radius: 3vw;
+}
+
+.messages {
+    font-size: 2vw;
+}
+
+.messageRight {
+    text-align: right;
+}
+
+.messageLeft {
+    text-align: left;
+}
