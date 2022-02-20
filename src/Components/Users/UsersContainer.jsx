@@ -60,6 +60,7 @@ const mapStateToProps = (state) => {
         isFetching: state.usersPage.isFetching
     }
 }
+
 /*
 const mapDispatchToProps = (dispatch) => {
     return {
