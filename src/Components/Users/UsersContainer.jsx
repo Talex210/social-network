@@ -30,7 +30,7 @@ class UsersContainer extends React.Component {
         this.props.setCurrentPage(pageNumber);
         this.props.toggleIsFetching(true);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
-             // debugger
+            // debugger
             this.props.toggleIsFetching(false);
             this.props.setUsers(response.data.items);
         })
@@ -40,14 +40,14 @@ class UsersContainer extends React.Component {
         return (
             <>
                 {this.props.isFetching ? <Preloader/> : null}
-            <Users totalUsersCount={this.props.totalUsersCount}
-                   pageSize={this.props.pageSize}
-                   currentPage={this.props.currentPage}
-                   users={this.props.users}
-                   unfollow={this.props.unfollow}
-                   follow={this.props.follow}
-                   onPageChanged={this.onPageChanged}
-            />
+                <Users totalUsersCount={this.props.totalUsersCount}
+                       pageSize={this.props.pageSize}
+                       currentPage={this.props.currentPage}
+                       users={this.props.users}
+                       unfollow={this.props.unfollow}
+                       follow={this.props.follow}
+                       onPageChanged={this.onPageChanged}
+                />
             </>
         )
     }
@@ -62,7 +62,7 @@ const mapStateToProps = (state) => {
         isFetching: state.usersPage.isFetching
     }
 }
-
+/*
 const mapDispatchToProps = (dispatch) => {
     return {
         follow: (userID) => {
@@ -85,5 +85,13 @@ const mapDispatchToProps = (dispatch) => {
         }
     }
 }
+*/
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
+export default connect(mapStateToProps, {
+    follow: followAC,
+    unfollow: unfollowAC,
+    setUsers: setUsersAC,
+    setCurrentPage: setCurrentPageAC,
+    setUsersCount: setUsersCountAC,
+    toggleIsFetching: toggleIsFetchingAC
+})(UsersContainer)
