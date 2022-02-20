@@ -24,8 +24,8 @@ let initialState = {
             location: {city: 'Moscow', country: 'Russia'}
         }*/
     ],
-    pageSize: 1000,
-    totalUsersCount: 20, // почему при изминение отображается количество пользователей ?
+    pageSize: 50,
+    totalUsersCount: 0,
     currentPage: 1,
     isFetching: false
 }
@@ -35,7 +35,6 @@ const usersReducer = (state = initialState, action) => {
         case follow:
             return {
                 ...state,
-// users: [...state.users],
                 users: state.users.map(u => {
                     if (u.id === action.userID) {
                         return {...u, followed: true}
@@ -56,7 +55,7 @@ const usersReducer = (state = initialState, action) => {
         case setUsers:
             return {
                 ...state,
-                users: [...action.users] // ...state.users,
+                users: action.users
             }
         case setCurrentPage:
             return {
