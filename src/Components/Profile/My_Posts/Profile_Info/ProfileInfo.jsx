@@ -1,6 +1,12 @@
 import s from './ProfileInfo.module.css';
+import Preloader from '../../../Common/Preloader/Preloader';
 
 const ProfileInfo = (props) => {
+
+    if (!props.profile) {
+        return <Preloader/>
+    }
+
     return (
         <div>
             <div className={s.imgBlock}>
@@ -8,6 +14,7 @@ const ProfileInfo = (props) => {
             </div>
             <div className={s.descriptionBlock}>
                 {props.description}
+                <img alt='photo' src={props.profile.photos.large}/>
             </div>
         </div>
     );
