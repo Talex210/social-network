@@ -1,5 +1,8 @@
 import s from './ProfileInfo.module.css';
 import Preloader from '../../../Common/Preloader/Preloader';
+import checkMarkTrue from '../../../../assets/img/checkMarkTrue.jpg'
+import checkMarkFalse from '../../../../assets/img/checkMarkFalse.jpg'
+import NoAvatar from '../../../../assets/img/NoAvatar.png'
 
 const ProfileInfo = (props) => {
 
@@ -13,8 +16,27 @@ const ProfileInfo = (props) => {
                 <img alt='background' src='https://discordik.ru/wp-content/uploads/2021/02/fon-dlya-diskorda.png'/>
             </div>
             <div className={s.descriptionBlock}>
-                {props.description}
-                <img alt='photo' src={props.profile.photos.large}/>
+                <div className={s.photoUser}>
+                    <img alt='photo' src={props.profile.photos.large != null ? props.profile.photos.large : NoAvatar}/>
+                </div>
+                <div>Имя пользователя: {props.profile.fullName}</div>
+                <div className={s.aboutMe}>Обо мне: {props.profile.aboutMe}</div>
+                <div className={s.contactsAll}>
+                    <div className={s.contacts}>Контакты:</div>
+                    <div>Facebook: {props.profile.contacts.facebook}</div>
+                    <div>VK: {props.profile.contacts.vk}</div>
+                    <div>Website: {props.profile.contacts.website}</div>
+                    <div>Twitter: {props.profile.contacts.twitter}</div>
+                    <div>Instagram: {props.profile.contacts.instagram}</div>
+                    <div>Youtube: {props.profile.contacts.youtube}</div>
+                    <div>Github: {props.profile.contacts.github}</div>
+                    <div>MainLink: {props.profile.contacts.mainLink}</div>
+                </div>
+                <div className={s.lookingForAJob}>
+                    <div>Ищет работу?</div>
+                    <img alt='true or false' src={props.profile.lookingForAJob ? checkMarkTrue : checkMarkFalse}/>
+                    <div>Описание: {props.profile.lookingForAJobDescription}</div>
+                </div>
             </div>
         </div>
     );
