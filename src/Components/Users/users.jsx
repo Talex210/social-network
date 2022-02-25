@@ -1,6 +1,5 @@
 import s from "./Users.module.css";
 import noAvatar from "../../assets/img/NoAvatar.png";
-import React from "react";
 import {NavLink} from "react-router-dom";
 
 const Users = (props) => {
@@ -10,7 +9,6 @@ const Users = (props) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
-
     let usersNumber = 1
 
     return (
