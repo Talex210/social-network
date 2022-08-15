@@ -17,7 +17,7 @@ const ProfileInfo = (props) => {
             </div>
             <div className={s.descriptionBlock}>
                 <div className={s.photoUser}>
-                    <img alt='photo' src={props.profile.photos.large != null ? props.profile.photos.large : NoAvatar}/>
+                    <img alt='profile_photo' src={props.profile.photos.large != null ? props.profile.photos.large : NoAvatar}/>
                 </div>
                 <div>Имя пользователя: {props.profile.fullName}</div>
                 <div className={s.aboutMe}>Обо мне: {props.profile.aboutMe}</div>
