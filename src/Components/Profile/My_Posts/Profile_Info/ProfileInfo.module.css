@@ -6,3 +6,15 @@
     width: 100%;
     height: 30vw;
 }
+
+.lookingForAJob img {
+    width: 10vw;
+}
+
+.aboutMe, .photoUser img {
+    margin: 0.5vw 0 0.5vw 0;
+}
+
+.contacts, .contactsAll {
+    margin-bottom: 0.5vw;
+}

@@ -1,11 +1,10 @@
-// import s from './Profile.module.css';
-import ProfileInfo from "./My_Posts/Profile_Info/ProfileInfo";
-import MyPostsContainer from "./My_Posts/MyPostsContainer";
+import ProfileInfo from './My_Posts/Profile_Info/ProfileInfo';
+import MyPostsContainer from './My_Posts/MyPostsContainer';
 
-const Profile = () => {
+const Profile = (props) => {
     return (
         <div>
-            <ProfileInfo description='ava + description'/>
+            <ProfileInfo profile={props.profile}/>
             <MyPostsContainer />
         </div>
     );
