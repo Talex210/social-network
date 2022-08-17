@@ -1,19 +1,19 @@
-import './App.css';
-import Header from "./Components/Header/Header";
-import NavBar from "./Components/Nav_Bar/NavBar";
-import {Routes, Route} from "react-router-dom";
-import News from "./Components/News/News";
-import Music from "./Components/Music/Music";
-import Settings from "./Components/Settings/Settings";
-import Friends from "./Components/Friends/Friends";
-import DialogsContainer from "./Components/Dialogs/DialogsContainer";
-import UsersContainer from "./Components/Users/UsersContainer";
-import ProfileContainer from "./Components/Profile/ProfileContainer";
+import './App.css'
+import NavBar from './Components/Nav_Bar/NavBar'
+import {Routes, Route} from 'react-router-dom'
+import News from './Components/News/News'
+import Music from './Components/Music/Music'
+import Settings from './Components/Settings/Settings'
+import Friends from './Components/Friends/Friends'
+import DialogsContainer from './Components/Dialogs/DialogsContainer'
+import UsersContainer from './Components/Users/UsersContainer'
+import ProfileContainer from './Components/Profile/ProfileContainer'
+import HeaderContainer from './Components/Header/HeaderContainer'
 
 const App = (props) => {
     return (
         <div className='app-wrapper'>
-            <Header/>
+            <HeaderContainer/>
             <NavBar friendsAvatar={props.state.dialogsPage.dialogsData}/>
             <div className='app-wrapper-content'>
                 <Routes>
@@ -27,7 +27,7 @@ const App = (props) => {
                 </Routes>
             </div>
         </div>
-    );
+    )
 }
 
-export default App;
+export default App
