@@ -2,7 +2,7 @@ const followVar = 'FOLLOW';
 const unfollowVar = 'UNFOLLOW';
 const setUsersVar = 'SET-USERS';
 const setCurrentPageVar = 'SET-CURRENT-PAGE';
-const setUsersCountVar ='SET-USERS-COUNT';
+const setUsersCountVar = 'SET-USERS-COUNT';
 const toggleIsFetchingVar = 'TOGGLE-IS-FETCHING';
 
 let initialState = {
