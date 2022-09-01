@@ -36,27 +36,27 @@ const Users = (props) => {
                             </div>
                             <div>
                                 {u.followed ?
-                                    <button onClick={() => {
-
-                                        API.deleteFollow(u.id).then(data => {
-                                                if (data.resultCode === 0) {
-                                                    props.unfollow(u.id)
-                                                }
-                                            }
-                                        )
-
-                                    }}>Unfollow</button>
+                                    <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                            onClick={() => {
+                                                props.toggleFollowingIsProgress(true, u.id)
+                                                API.deleteFollow(u.id).then(data => {
+                                                    if (data.resultCode === 0) {
+                                                        props.unfollow(u.id)
+                                                    }
+                                                    props.toggleFollowingIsProgress(false, u.id)
+                                                })
+                                            }}>Unfollow</button>
                                     :
-                                    <button onClick={() => {
-
-                                        API.postFollow(u.id).then(data => {
-                                                if (data.resultCode === 0) {
-                                                    props.follow(u.id)
-                                                }
-                                            }
-                                        )
-
-                                    }}>Follow</button>}
+                                    <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                            onClick={() => {
+                                                props.toggleFollowingIsProgress(true, u.id)
+                                                API.postFollow(u.id).then(data => {
+                                                    if (data.resultCode === 0) {
+                                                        props.follow(u.id)
+                                                    }
+                                                    props.toggleFollowingIsProgress(false, u.id)
+                                                })
+                                            }}>Follow</button>}
                             </div>
                         </span>
                         <span>
@@ -67,10 +67,6 @@ const Users = (props) => {
                                 <div>
                                     {u.status}
                                 </div>
-                            </span>
-                            <span>
-                                {/*<div>{u.location.country}</div>
-                                <div>{u.location.city}</div>*/}
                             </span>
                         </span>
                     </div>
