@@ -1,10 +1,11 @@
-import {messageChangeActionCreator, sendMessageActionCreator} from "../../REDUX/dialogsReducer";
-import Dialogs from "./Dialogs";
-import {connect} from "react-redux";
+import {messageChangeActionCreator, sendMessageActionCreator} from '../../REDUX/dialogsReducer'
+import Dialogs from './Dialogs'
+import {connect} from 'react-redux'
 
 let mapStateToProps = (state) => {
     return {
-        dialogsPage: state.dialogsPage
+        dialogsPage: state.dialogsPage,
+        isAuth: state.auth.isAuth,
     }
 }
 
