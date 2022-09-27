@@ -1,5 +1,7 @@
-const addPost = 'ADD-POST';
-const setUpdateTextarea = 'SET-UPDATE-TEXTAREA';
+import {API} from '../api/api'
+
+const addPost = 'ADD-POST'
+const setUpdateTextarea = 'SET-UPDATE-TEXTAREA'
 const setUserProfileVar = 'SET-USER-PROFILE'
 
 let initialState = {
@@ -40,4 +42,12 @@ export const addPostActionCreator = () => ({type: addPost})
 export const postChangeActionCreator = (text) => ({type: setUpdateTextarea, newText: text})
 export const setUserProfile = (profile) => ({type: setUserProfileVar, profile})
 
-export default profileReducer;
+export const getUserProfile = (userId) => {
+    return (dispatch) => {
+        API.getUserProfile(userId).then(data => {
+            dispatch(setUserProfile(data))
+        })
+    }
+}
+
+export default profileReducer
