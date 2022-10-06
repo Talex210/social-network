@@ -7,6 +7,7 @@ import {
 import React from 'react'
 import Users from './users'
 import Preloader from '../Common/Preloader/Preloader'
+import {withAuthRedirect} from '../../hoc/withAuthRedirect'
 
 class UsersContainer extends React.Component {
 
@@ -47,8 +48,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {
+// let withRedirect = withAuthRedirect(UsersContainer)
+
+export default withAuthRedirect(connect(mapStateToProps, {
     follow,
     unfollow,
     getUsers,
-})(UsersContainer)
+})(UsersContainer))
