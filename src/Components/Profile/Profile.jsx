@@ -1,13 +1,13 @@
-import ProfileInfo from './My_Posts/Profile_Info/ProfileInfo';
-import MyPostsContainer from './My_Posts/MyPostsContainer';
+import ProfileInfo from './My_Posts/Profile_Info/ProfileInfo'
+import MyPostsContainer from './My_Posts/MyPostsContainer'
 
 const Profile = (props) => {
     return (
         <div>
             <ProfileInfo profile={props.profile}/>
-            <MyPostsContainer />
+            <MyPostsContainer/>
         </div>
-    );
+    )
 }
 
-export default Profile;
+export default Profile

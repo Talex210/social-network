@@ -1,8 +1,9 @@
-import s from './ProfileInfo.module.css';
-import Preloader from '../../../Common/Preloader/Preloader';
+import s from './ProfileInfo.module.css'
+import Preloader from '../../../Common/Preloader/Preloader'
 import checkMarkTrue from '../../../../assets/img/checkMarkTrue.jpg'
 import checkMarkFalse from '../../../../assets/img/checkMarkFalse.jpg'
 import NoAvatar from '../../../../assets/img/NoAvatar.png'
+import ProfileStatus from './ProfileStatus'
 
 const ProfileInfo = (props) => {
 
@@ -12,13 +13,15 @@ const ProfileInfo = (props) => {
 
     return (
         <div>
-            <div className={s.imgBlock}>
+            {/*<div className={s.imgBlock}>
                 <img alt='background' src='https://discordik.ru/wp-content/uploads/2021/02/fon-dlya-diskorda.png'/>
-            </div>
+            </div>*/}
             <div className={s.descriptionBlock}>
                 <div className={s.photoUser}>
-                    <img alt='profile_photo' src={props.profile.photos.large != null ? props.profile.photos.large : NoAvatar}/>
+                    <img alt='profile_photo'
+                         src={props.profile.photos.large != null ? props.profile.photos.large : NoAvatar}/>
                 </div>
+                <ProfileStatus status={'Hello my friends'}/>
                 <div>Имя пользователя: {props.profile.fullName}</div>
                 <div className={s.aboutMe}>Обо мне: {props.profile.aboutMe}</div>
                 <div className={s.contactsAll}>
@@ -39,7 +42,7 @@ const ProfileInfo = (props) => {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-export default ProfileInfo;
+export default ProfileInfo
