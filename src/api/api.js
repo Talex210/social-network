@@ -38,7 +38,19 @@ export const API = {
                 return response.data
             }
         )
-    }
+    },
+    getUserStatus(userId) {
+        return instance.get(`profile/status/${userId}`).then(response => {
+                return response.data
+            }
+        )
+    },
+    updateUserStatus(status) {
+        return instance.put(`profile/status`, {status: status}).then(response => {
+                return response.data
+            }
+        )
+    },
 }
 
 /*export const getUsers = (currentPage = 1, pageSize = 10) => {

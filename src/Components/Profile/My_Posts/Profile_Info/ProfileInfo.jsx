@@ -13,15 +13,15 @@ const ProfileInfo = (props) => {
 
     return (
         <div>
-            {/*<div className={s.imgBlock}>
-                <img alt='background' src='https://discordik.ru/wp-content/uploads/2021/02/fon-dlya-diskorda.png'/>
-            </div>*/}
             <div className={s.descriptionBlock}>
                 <div className={s.photoUser}>
                     <img alt='profile_photo'
                          src={props.profile.photos.large != null ? props.profile.photos.large : NoAvatar}/>
                 </div>
-                <ProfileStatus status={'Hello my friends'}/>
+                <ProfileStatus
+                    status={props.status}
+                    updateStatus={props.updateStatus}
+                />
                 <div>Имя пользователя: {props.profile.fullName}</div>
                 <div className={s.aboutMe}>Обо мне: {props.profile.aboutMe}</div>
                 <div className={s.contactsAll}>
