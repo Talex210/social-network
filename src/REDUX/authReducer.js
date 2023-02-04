@@ -26,6 +26,8 @@ const authReducer = (state = initialState, action) => {
 
 export const setAuthUserData = (userId, email, login) => ({type: SET_USER_DATA, data: {userId, email, login}})
 
+// export const setLoginData // связано с api, так же не сделано чтобы работало
+
 export const getAuthUserData = () => {
     return (dispatch) => {
         API.getAuthMe().then(data => {
@@ -36,5 +38,15 @@ export const getAuthUserData = () => {
         })
     }
 }
+
+/*export const postLoginData = (userData) => { // связано с api, так же не сделано чтобы работало
+    return (dispatch) => {
+        API.postLogin(userData).then(data => {
+            if (data.resultCode === 0) {
+                dispatch(setAuthUserData(id, email, login))
+            }
+        })
+    }
+}*/
 
 export default authReducer

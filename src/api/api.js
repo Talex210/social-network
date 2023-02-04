@@ -21,6 +21,12 @@ export const API = {
             }
         )
     },
+    postLogin(formData) { // написал, но не сделал чтобы работало
+        return instance.post(`auth/login${formData}`, {}).then(response => {
+                return response.data
+            }
+        )
+    },
     deleteFollow(userId) {
         return instance.delete(`follow/${userId}`).then(response => {
                 return response.data

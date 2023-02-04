@@ -1,5 +1,6 @@
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
+// import {API} from '../../api/api'
 
 const LoginForm = (props) => {
     return (
@@ -38,6 +39,7 @@ const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 const Login = (props) => {
     const onSubmit = (formData) => {
         console.log(formData) // этому объекту нужно сделать post через api
+        // API.postLogin(formData)
     }
 
     return (
