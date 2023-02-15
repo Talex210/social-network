@@ -21,8 +21,14 @@ export const API = {
             }
         )
     },
-    postLogin(formData) { // написал, но не сделал чтобы работало
-        return instance.post(`auth/login${formData}`, {}).then(response => {
+    login(email, password, rememberMe = false) {
+        return instance.post(`auth/login`, {email, password, rememberMe}).then(response => {
+                return response.data
+            }
+        )
+    },
+    logout() {
+        return instance.delete(`auth/login`).then(response => {
                 return response.data
             }
         )
