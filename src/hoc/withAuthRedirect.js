@@ -1,5 +1,4 @@
 import React from 'react'
-// import {Component} from 'react'
 import {Navigate} from 'react-router-dom'
 import {connect} from 'react-redux'
 

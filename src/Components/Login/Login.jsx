@@ -2,16 +2,18 @@ import React from 'react'
 import {Field, reduxForm} from 'redux-form'
 import {Input} from '../Common/FormsControls/FormsControls'
 import {required} from '../../utils/validators'
-// import {API} from '../../api/api'
+import {connect} from 'react-redux'
+import {login} from '../../REDUX/authReducer'
+import {Navigate} from 'react-router-dom'
 
 const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
                 <Field
-                    placeholder={'Login'}
+                    placeholder={'Email'}
                     component={Input}
-                    name={'login'}
+                    name={'email'}
                     validate={[required]}
                 />
             </div>
@@ -21,6 +23,7 @@ const LoginForm = (props) => {
                     component={Input}
                     name={'password'}
                     validate={[required]}
+                    type={'password'}
                 />
             </div>
             <div>
@@ -42,8 +45,11 @@ const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        console.log(formData) // этому объекту нужно сделать post через api
-        // API.postLogin(formData)
+        props.login(formData.email, formData.password, formData.rememberMe)
+    }
+
+    if (props.isAuth) {
+        return <Navigate to ='/profile' />
     }
 
     return (
@@ -56,4 +62,8 @@ const Login = (props) => {
     )
 }
 
-export default Login // логин нужно будет законектить
+const mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth,
+})
+
+export default connect(mapStateToProps, {login})(Login)
