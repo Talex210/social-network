@@ -17,7 +17,12 @@ export function withRouter(Children) {
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
-        const userId = this.props.match.params.userId
+        let userId = this.props.match.params.userId
+        if (!userId) { // как то не совсем корректно работает, при выборе пользователя переходит на мою страницу, но
+            // после обновления страницы появляется нужный пользователь, это если мы поставим this.props.isAuth вместо userId
+            // связано с роутингом в App.js, 21 строка
+            userId = this.props.authorizedUserId
+        }
         this.props.getUserProfile(userId)
         this.props.getUserStatus(userId)
     }
@@ -39,6 +44,8 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
+    authorizedUserId: state.auth.userId,
+    isAuth: state.auth.isAuth,
 })
 
 export default compose(
