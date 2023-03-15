@@ -3,6 +3,7 @@ import Preloader from '../../../Common/Preloader/Preloader'
 import checkMarkTrue from '../../../../assets/img/checkMarkTrue.jpg'
 import checkMarkFalse from '../../../../assets/img/checkMarkFalse.jpg'
 import NoAvatar from '../../../../assets/img/NoAvatar.png'
+import ProfileStatusWithHooks from './ProfileStatusWithHooks'
 import ProfileStatus from './ProfileStatus'
 
 const ProfileInfo = (props) => {
@@ -18,7 +19,11 @@ const ProfileInfo = (props) => {
                     <img alt='profile_photo'
                          src={props.profile.photos.large != null ? props.profile.photos.large : NoAvatar}/>
                 </div>
-                <ProfileStatus
+                {/*<ProfileStatus
+                    status={props.status}
+                    updateStatus={props.updateStatus}
+                />*/}
+                <ProfileStatusWithHooks
                     status={props.status}
                     updateStatus={props.updateStatus}
                 />
