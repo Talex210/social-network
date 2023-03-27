@@ -10,11 +10,17 @@ class MyPosts extends React.Component {
     }
 
     render() {
-        console.log('render')
-        let postElements = this.props.profilePage.postsData.map((p, i) => (
-            <MyPost key={i} message={p.message}
+        // console.log('render')
+        let postElements = [...this.props.profilePage.postsData]
+            .reverse()
+            .map((p, i) => (
+                <MyPost
+                    key={i}
+                    message={p.message}
                     likeCounter={p.likeCounter}
-                    dislikeCounter={p.dislikeCounter}/>))
+                    dislikeCounter={p.dislikeCounter}
+                />
+            ))
 
         return (
             <div className={s.postBlock}>
