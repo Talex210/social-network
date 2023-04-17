@@ -1,64 +1,31 @@
-import s from './Users.module.css'
-import noAvatar from '../../assets/img/NoAvatar.png'
-import {NavLink} from 'react-router-dom'
+import Paginator from '../Common/Paginator/Paginator'
+import {User} from './User'
 
-const Users = (props) => {
-
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
-    let pages = []
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
-    }
-    let usersNumber = 1
+const Users = ({
+                   totalUsersCount,
+                   pageSize,
+                   currentPage,
+                   onPageChanged,
+                   ...props
+               }) => {
 
     return (
         <div>
-            <div>
-                {pages.map((p, i) =>
-                    <span className={props.currentPage === p ? s.selectPage : s.selectPageOff}
-                          onClick={() => {
-                              props.onPageChanged(p)
-                          }}
-                          key={i}>
-                            {p}_
-                        </span>
-                )}
-            </div>
-            {
-                props.users.map(u =>
-                    <div key={u.id}>
-                        <span>
-                            <div className={s.avatar}>
-                                <NavLink to={'/profile/' + u.id}>
-                                    <img alt='1' src={u.photos.large != null ? u.photos.large : noAvatar}/>
-                                </NavLink>
-                            </div>
-                            <div>
-                                {u.followed ?
-                                    <button disabled={props.followingInProgress.some(id => id === u.id)}
-                                            onClick={() => {
-                                                props.unfollow(u.id)
-                                            }}>Unfollow</button>
-                                    :
-                                    <button disabled={props.followingInProgress.some(id => id === u.id)}
-                                            onClick={() => {
-                                                props.follow(u.id)
-                                            }}>Follow</button>}
-                            </div>
-                        </span>
-                        <span>
-                            <span>
-                                <div>
-                                     {usersNumber++}. - {u.name} and id = {u.id}
-                                </div>
-                                <div>
-                                    {u.status}
-                                </div>
-                            </span>
-                        </span>
-                    </div>
-                )
-            }
+            <Paginator
+                currentPage={currentPage}
+                onPageChanged={onPageChanged}
+                totalUsersCount={totalUsersCount}
+                pageSize={pageSize}
+            />
+            {props.users.map(user =>
+                <User
+                    key={user.id}
+                    user={user}
+                    followingInProgress={props.followingInProgress}
+                    unfollow={props.unfollow}
+                    follow={props.follow}
+                />
+            )}
         </div>
     )
 }
