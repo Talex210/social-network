@@ -2,9 +2,7 @@ import style from './Users.module.css'
 import noAvatar from '../../assets/img/NoAvatar.png'
 import {NavLink} from 'react-router-dom'
 
-export const User = ({user, followingInProgress, unfollow, follow}) => {
-    let userNumber = 1
-
+export const User = ({user, followingInProgress, unfollow, follow, userNumber}) => {
     return (
         <div>
             <span>
@@ -34,7 +32,7 @@ export const User = ({user, followingInProgress, unfollow, follow}) => {
             <span>
                 <span>
                     <div>
-                        {userNumber++}. - {user.name} and id = {user.id}
+                        {userNumber}. - {user.name} and id = {user.id}
                     </div>
                     <div>
                         {user.status}
