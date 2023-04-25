@@ -7,14 +7,16 @@ import News from './Components/News/News'
 import Music from './Components/Music/Music'
 import Settings from './Components/Settings/Settings'
 import Friends from './Components/Friends/Friends'
-import DialogsContainer from './Components/Dialogs/DialogsContainer'
 import UsersContainer from './Components/Users/UsersContainer'
-import ProfileContainer from './Components/Profile/ProfileContainer'
 import HeaderContainer from './Components/Header/HeaderContainer'
 import Login from './Components/Login/Login'
+import Preloader from './Components/Common/Preloader/Preloader'
+import {withSuspense} from './hoc/withSuspense'
 
 import './App.css'
-import Preloader from './Components/Common/Preloader/Preloader'
+
+const DialogsContainer = React.lazy(() => import('./Components/Dialogs/DialogsContainer'))
+const ProfileContainer = React.lazy(() => import('./Components/Profile/ProfileContainer'))
 
 class App extends Component {
     componentDidMount() {
@@ -25,6 +27,8 @@ class App extends Component {
         if (!this.props.initialized) {
             return <Preloader/>
         }
+        const DialogContainerWithSuspense = withSuspense(DialogsContainer)
+        const ProfileContainerWithSuspense = withSuspense(ProfileContainer)
 
         return (
             <div className='app-wrapper'>
@@ -32,8 +36,8 @@ class App extends Component {
                 <NavBar friendsAvatar={this.props.state.dialogsPage.dialogsData}/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path='/profile/:userId' element={<ProfileContainer/>}/>
-                        <Route path='/dialogs/*' element={<DialogsContainer/>}/>
+                        <Route path='/profile/:userId' element={<ProfileContainerWithSuspense/>}/>
+                        <Route path='/dialogs/*' element={<DialogContainerWithSuspense/>}/>
                         <Route path='/news' element={<News/>}/>
                         <Route path='/music' element={<Music/>}/>
                         <Route path='/settings' element={<Settings/>}/>
