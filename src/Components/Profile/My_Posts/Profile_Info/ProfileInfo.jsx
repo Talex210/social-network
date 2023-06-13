@@ -1,14 +1,21 @@
-import s from './ProfileInfo.module.css'
 import Preloader from '../../../Common/Preloader/Preloader'
 import checkMarkTrue from '../../../../assets/img/checkMarkTrue.jpg'
 import checkMarkFalse from '../../../../assets/img/checkMarkFalse.jpg'
 import NoAvatar from '../../../../assets/img/NoAvatar.png'
 import ProfileStatusWithHooks from './ProfileStatusWithHooks'
 
-const ProfileInfo = ({profile, status, updateStatus}) => {
+import s from './ProfileInfo.module.css'
+
+const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
 
     if (!profile) {
         return <Preloader/>
+    }
+
+    const onMainPhotoSelected = (event) => {
+        if (event.target.files.length) {
+            savePhoto(event.target.files[0])
+        }
     }
 
     return (
@@ -17,8 +24,16 @@ const ProfileInfo = ({profile, status, updateStatus}) => {
                 <div className={s.photoUser}>
                     <img
                         alt='profile_photo'
-                        src={profile.photos.large != null ? profile.photos.large : NoAvatar}
+                        src={profile.photos.large || NoAvatar}
                     />
+                </div>
+                <div>
+                    { isOwner &&
+                        <input
+                            type={'file'}
+                            onChange={onMainPhotoSelected}
+                        />
+                    }
                 </div>
                 <ProfileStatusWithHooks
                     status={status}
