@@ -75,6 +75,12 @@ export const API = {
             }
         )
     },
+    saveProfile(profile) {
+        return instance.put(`profile`, profile).then(response => {
+                return response.data
+            }
+        )
+    },
 }
 
 /*export const getUsers = (currentPage = 1, pageSize = 10) => {

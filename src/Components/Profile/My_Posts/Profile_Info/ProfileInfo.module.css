@@ -15,6 +15,10 @@
     margin: 0.5vw 0 0.5vw 0;
 }
 
-.contacts, .contactsAll {
+.contactsAll {
     margin-bottom: 0.5vw;
+}
+
+.contacts {
+    padding-left: 1vw;
 }
