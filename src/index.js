@@ -1,17 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import {BrowserRouter} from 'react-router-dom'
-// import {HashRouter} from 'react-router-dom'
 import store from './REDUX/ReduxStore'
 import {Provider} from 'react-redux'
+
+import './index.css'
 
 ReactDOM.render(
     // <React.StrictMode>
         <BrowserRouter>
-        {/*<BrowserRouter basename={process.env.PUBLIC_URL}>*/}
             <Provider store={store}>
                 <App state={store.getState()}/>
             </Provider>

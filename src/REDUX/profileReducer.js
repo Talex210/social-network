@@ -75,10 +75,15 @@ export const getUserStatus = (userId) => async (dispatch) => {
 }
 
 export const updateStatus = (status) => async (dispatch) => {
-    const data = await API.updateUserStatus(status)
+    try {
+        const data = await API.updateUserStatus(status)
 
-    if (data.resultCode === 0) {
-        dispatch(setStatus(status))
+        if (data.resultCode === 0) {
+            dispatch(setStatus(status))
+        }
+    } catch(error) {
+        // debugger
+        console.log(error)
     }
 }
 

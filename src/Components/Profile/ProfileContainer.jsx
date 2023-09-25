@@ -30,21 +30,6 @@ class ProfileContainer extends React.Component {
 
     componentDidMount() {
         this.refreshProfile()
-        /*let userId = this.props.match.params.userId
-        // console.log(userId) // сроботавает только с Users
-        // скорей всего нужно смотреть как работает из Users переход, на страничку пользователя
-        // когда кликаю на профиль, должен появляться мой профиль
-        // debugger
-        if (!userId) { // как то не совсем корректно работает, при выборе пользователя переходит на мою страницу, но
-            // после обновления страницы появляется нужный пользователь, это если мы поставим this.props.isAuth вместо userId
-            // связано с роутингом в App.js, 35 строка
-            userId = this.props.authorizedUserId
-            if (!userId) {
-                this.props.navigate('/login')
-            }
-        }
-        this.props.getUserProfile(userId)
-        this.props.getUserStatus(userId)*/
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {

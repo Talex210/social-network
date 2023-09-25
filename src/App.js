@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {initializeApp} from './REDUX/appReducer'
 import NavBar from './Components/Nav_Bar/NavBar'
-import {Routes, Route} from 'react-router-dom'
+import {Routes, Route, Navigate} from 'react-router-dom'
 import News from './Components/News/News'
 import Music from './Components/Music/Music'
 import Settings from './Components/Settings/Settings'
@@ -19,8 +19,18 @@ const DialogsContainer = React.lazy(() => import('./Components/Dialogs/DialogsCo
 const ProfileContainer = React.lazy(() => import('./Components/Profile/ProfileContainer'))
 
 class App extends Component {
+    catchAllUnhandledErrors = (promiseRejectionEvent) => {
+        // не будет срабатывать если есть try catch
+        alert('Some error occurred')
+        console.error(promiseRejectionEvent)
+    }
     componentDidMount() {
         this.props.initializeApp()
+        window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors)
     }
 
     render() {
@@ -36,6 +46,7 @@ class App extends Component {
                 <NavBar friendsAvatar={this.props.state.dialogsPage.dialogsData}/>
                 <div className='app-wrapper-content'>
                     <Routes>
+                        <Route path='/profile' element={<Navigate to="/profile/25555" />}/>
                         <Route path='/profile/:userId' element={<ProfileContainerWithSuspense/>}/>
                         <Route path='/dialogs/*' element={<DialogContainerWithSuspense/>}/>
                         <Route path='/news' element={<News/>}/>
@@ -44,6 +55,7 @@ class App extends Component {
                         <Route path='/friends' element={<Friends/>}/>
                         <Route path='/users' element={<UsersContainer/>}/>
                         <Route path='/login' element={<Login/>}/>
+                        <Route path='*' element={<div>404 NOT FOUND</div>}/>
                     </Routes>
                 </div>
             </div>
