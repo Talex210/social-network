@@ -7,7 +7,26 @@ const SET_STATUS = 'SET-STATUS'
 const DELETE_POST = 'DELETE_POST'
 const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS'
 
-let initialState = {
+interface InitialState {
+    postsData: [
+        {
+            id: number;
+            message: string;
+            likeCounter: number;
+            dislikeCounter: number;
+        },
+        {
+            id: number;
+            message: string;
+            likeCounter: number;
+            dislikeCounter: number;
+        }
+    ];
+    profile: any;
+    status: any;
+}
+
+let initialState: InitialState = {
     postsData: [
         {id: 1, message: 'Hi, how are you?', likeCounter: 16, dislikeCounter: 3},
         {id: 2, message: "It's my firs post", likeCounter: 30, dislikeCounter: 4}
@@ -16,7 +35,7 @@ let initialState = {
     status: '',
 }
 
-const profileReducer = (state = initialState, action) => {
+export const profileReducer = (state: InitialState = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             return {
@@ -106,5 +125,3 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
         return Promise.reject(data.messages[0])
     }
 }
-
-export default profileReducer
