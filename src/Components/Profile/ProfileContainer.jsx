@@ -1,9 +1,9 @@
 import React from 'react'
 import Profile from './Profile'
-import {connect} from 'react-redux'
-import {getUserProfile, getUserStatus, savePhoto, updateStatus, saveProfile} from '../../REDUX/profileReducer'
-import {useParams, useLocation, useNavigate} from 'react-router-dom'
-import {compose} from 'redux'
+import { connect } from 'react-redux'
+import { getUserProfile, getUserStatus, savePhoto, updateStatus, saveProfile } from '../../REDUX/profileReducer.ts'
+import { useParams, useLocation, useNavigate } from 'react-router-dom'
+import { compose } from 'redux'
 
 export function withRouter(Children) {
     return (props) => {

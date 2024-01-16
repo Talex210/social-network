@@ -3,7 +3,7 @@ import {reduxForm} from 'redux-form'
 import {creatField, Input} from '../Common/FormsControls/FormsControls'
 import {required} from '../../utils/validators'
 import {connect} from 'react-redux'
-import {login} from '../../REDUX/authReducer'
+import {login} from '../../REDUX/authReducer.ts'
 import {Navigate} from 'react-router-dom'
 
 import style from '../Common/FormsControls/FormsControls.module.css'
@@ -35,7 +35,12 @@ const LoginForm = ({handleSubmit, error, captchaUrl}) => {
                 'Remember me'
             )}
 
-            {captchaUrl && <img src={captchaUrl}/>}
+            {captchaUrl &&
+                <img
+                    src={captchaUrl}
+                    alt='captcha'
+                />
+            }
 
             {captchaUrl && creatField(
                 'Symbol from image',
