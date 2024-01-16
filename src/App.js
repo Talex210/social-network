@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {initializeApp} from './REDUX/appReducer'
+import { initializeApp } from './REDUX/appReducer.ts'
 import NavBar from './Components/Nav_Bar/NavBar'
 import {Routes, Route, Navigate} from 'react-router-dom'
 import News from './Components/News/News'
