@@ -7,35 +7,51 @@ const SET_STATUS = 'SET-STATUS'
 const DELETE_POST = 'DELETE_POST'
 const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS'
 
-interface InitialState {
-    postsData: [
-        {
-            id: number;
-            message: string;
-            likeCounter: number;
-            dislikeCounter: number;
-        },
-        {
-            id: number;
-            message: string;
-            likeCounter: number;
-            dislikeCounter: number;
-        }
-    ];
-    profile: any;
-    status: any;
+type PostsDataType = {
+    id: number,
+    message: string,
+    likeCounter: number,
+    dislikeCounter: number,
 }
 
-let initialState: InitialState = {
+type ContactsType = {
+    github: string,
+    vk: string,
+    facebook: string,
+    instagram: string,
+    twitter: string,
+    website: string,
+    youtube: string,
+    mainLink: string,
+}
+
+type PhotoType = {
+    small: string | null,
+    large: string | null,
+}
+
+type ProfileType = {
+    userId: number,
+    lookingForAJob: boolean,
+    lookingForAJobDescription: string,
+    fullName: string,
+    contacts: ContactsType,
+    photos: PhotoType,
+}
+
+let initialState = {
     postsData: [
         {id: 1, message: 'Hi, how are you?', likeCounter: 16, dislikeCounter: 3},
         {id: 2, message: "It's my firs post", likeCounter: 30, dislikeCounter: 4}
-    ],
-    profile: null,
+    ] as Array<PostsDataType>,
+    profile: null as ProfileType | null,
     status: '',
+    newPostText: '',
 }
 
-export const profileReducer = (state: InitialState = initialState, action) => {
+export type InitialStateType = typeof initialState
+
+export const profileReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case ADD_POST:
             return {
@@ -46,6 +62,7 @@ export const profileReducer = (state: InitialState = initialState, action) => {
                     likeCounter: 0,
                     dislikeCounter: 0,
                 }],
+                newPostText: '',
             }
 
         case SET_USER_PROFILE:
