@@ -118,7 +118,6 @@ export const updateStatus = (status) => async (dispatch) => {
             dispatch(setStatus(status))
         }
     } catch(error) {
-        // debugger
         console.log(error)
     }
 }
